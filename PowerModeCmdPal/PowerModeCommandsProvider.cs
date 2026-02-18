@@ -8,12 +8,14 @@ using PowerModeCmdPal.Commands;
 using PowerModeCmdPal.Helpers;
 using PowerModeCmdPal.Items;
 using PowerModeCmdPal.Pages;
+using System;
+using System.ComponentModel;
 
 namespace PowerModeCmdPal;
 
 public partial class PowerModeCommandsProvider : CommandProvider
 {
-    private PowerModeManager _powerModeManager;
+    private PowerModeManager? _powerModeManager;
     private readonly IFallbackCommandItem _fallbackCommandItem;
     private readonly ICommandItem _commandItem;
 
@@ -23,7 +25,16 @@ public partial class PowerModeCommandsProvider : CommandProvider
         DisplayName = "Power Mode"; // Name displayed in Extensions settings
         Icon = Icons.PowerModeIcon; // Icon displayed in Extensions settings
 
-        _powerModeManager = new PowerModeManager();
+        try
+        {
+            _powerModeManager = new PowerModeManager();
+        }
+        catch (Win32Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Failed to initialize PowerModeManager: {ex.Message}");
+            _powerModeManager = null;
+        }
+
         _fallbackCommandItem = new FallbackPowerModeCommandItem(_powerModeManager);
         _commandItem = new CommandItem(new PowerModePage(_powerModeManager))
         {

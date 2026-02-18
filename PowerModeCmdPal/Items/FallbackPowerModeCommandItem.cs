@@ -15,9 +15,9 @@ namespace PowerModeCmdPal.Items;
 internal sealed partial class FallbackPowerModeCommandItem : FallbackCommandItem
 {
     private readonly NoOpCommand _emptyCommand = new();
-    private readonly PowerModeManager _powerModeManager;
+    private readonly PowerModeManager? _powerModeManager;
 
-    public FallbackPowerModeCommandItem(PowerModeManager powerModeManager) 
+    public FallbackPowerModeCommandItem(PowerModeManager? powerModeManager)
         : base(new NoOpCommand(), "Set power mode")
     {
         Title = string.Empty;
@@ -30,7 +30,7 @@ internal sealed partial class FallbackPowerModeCommandItem : FallbackCommandItem
 
     public override void UpdateQuery(string query)
     {
-        if (string.IsNullOrWhiteSpace(query))
+        if (string.IsNullOrWhiteSpace(query) || _powerModeManager is null)
         {
             Title = string.Empty;
             Subtitle = string.Empty;

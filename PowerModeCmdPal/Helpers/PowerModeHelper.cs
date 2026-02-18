@@ -20,7 +20,13 @@ internal static class PowerModeHelper
     {
         uint size = 0;
 
-        api(IntPtr.Zero, ref powerPlanGuid, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, ref size);
+        // First call to query buffer size
+        uint sizeQueryResult = api(IntPtr.Zero, ref powerPlanGuid, IntPtr.Zero, IntPtr.Zero, IntPtr.Zero, ref size);
+        if (sizeQueryResult != 0)
+        {
+            System.Diagnostics.Debug.WriteLine($"Failed to query power string size: {sizeQueryResult}");
+            return string.Empty;
+        }
 
         if (size == 0)
             return string.Empty;

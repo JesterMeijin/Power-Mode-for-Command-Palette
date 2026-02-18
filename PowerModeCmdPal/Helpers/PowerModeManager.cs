@@ -59,19 +59,25 @@ internal sealed class PowerModeManager
     internal static IEnumerable<Guid> GetPowerModeGuidList()
     {
         Guid powerPlanGuid = Guid.Empty;
-        uint size = (uint)Marshal.SizeOf<Guid>();
         uint index = 0;
         uint result;
 
-        while ((result = NativeMethods.PowerEnumerate(
-            IntPtr.Zero,
-            IntPtr.Zero,
-            IntPtr.Zero,
-            (uint)AccessCodes.Scheme,
-            index,
-            ref powerPlanGuid,
-            ref size)) == 0)
+        while (true)
         {
+            // Reset size for each iteration to ensure we pass the correct buffer size
+            uint size = (uint)Marshal.SizeOf<Guid>();
+            result = NativeMethods.PowerEnumerate(
+                IntPtr.Zero,
+                IntPtr.Zero,
+                IntPtr.Zero,
+                (uint)AccessCodes.Scheme,
+                index,
+                ref powerPlanGuid,
+                ref size);
+
+            if (result != 0)
+                break;
+
             yield return powerPlanGuid;
             index++;
         }

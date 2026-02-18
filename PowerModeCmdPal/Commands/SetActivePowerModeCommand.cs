@@ -15,6 +15,12 @@ internal sealed partial class SetActivePowerModeCommand(Guid powerModeGuid, bool
 
     public override CommandResult Invoke()
     {
+        // Validate GUID before passing to Windows
+        if (powerModeGuid == Guid.Empty)
+        {
+            throw new ArgumentException("Power mode GUID cannot be empty", nameof(powerModeGuid));
+        }
+
         uint result = PowerModeManager.SetActivePowerModeGuid(powerModeGuid);
         if (result != 0)
             throw new Win32Exception((int)result);
