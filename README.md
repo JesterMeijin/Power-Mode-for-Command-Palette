@@ -26,8 +26,7 @@ winget install --id=JesterMeijin.PowerModeforCommandPalette  -e
 
 It can also be installed directly from the Windows Store:
 
-[![Microsoft](https://get.microsoft.com/images/en-us%20dark.svg)](https://apps.microsoft.com/)
-
+[![Microsoft](https://get.microsoft.com/images/en-us%20dark.svg)](https://apps.microsoft.com/store/detail/9MW8ZTKXCC5H)
 
 ## How To Use
 
