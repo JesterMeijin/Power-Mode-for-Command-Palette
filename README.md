@@ -33,12 +33,9 @@ It can also be installed directly from the Windows Store:
 
 After installing the extension, open the Command Palette, then enter in the "Power mode" section. From this menu, you'll be able to select between the available power modes, or open the Power Mode page in the Windows Settings.
 
-![Screenshot_2026-02-16_142036](/uploads/194bd4733aa4f76540df11623002fab0/Screenshot_2026-02-16_142036.png){width=900 height=506}
-
-![Recording_2026-02-16_141932](/uploads/4dd6e3545e7385a29d9d8f8c58907f10/Recording_2026-02-16_141932.gif){width=786 height=474}
-
-![Screenshot_2026-02-16_141902](/uploads/99747f5416b258788f1dc246631cbdb5/Screenshot_2026-02-16_141902.png){width=590 height=355}
+<img src="https://github.com/JesterMeijin/Power-Mode-for-Command-Palette/blob/main/PowerModeCmdPal/Assets/PowerModeFull.png" alt="PowerModeFull" width="800">
+<img src="https://github.com/JesterMeijin/Power-Mode-for-Command-Palette/blob/main/PowerModeCmdPal/Assets/PowerMode.png" alt="PowerMode" height="400">
 
 You can also directly type the name of the Power Mode you want to enable from the Command Palette main menu:  
 
-![Screenshot_2026-02-16_140607](/uploads/71ccdbce15e311241f0074104510e0ce/Screenshot_2026-02-16_140607.png){width=590 height=355}
+<img src="https://github.com/JesterMeijin/Power-Mode-for-Command-Palette/blob/main/PowerModeCmdPal/Assets/PowerModeFallback.png" alt="PowerModeFallback" height="400">
