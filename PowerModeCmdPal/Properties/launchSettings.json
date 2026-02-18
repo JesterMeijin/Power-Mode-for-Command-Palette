@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "PowerModeCmdPal (Package)": {
+      "commandName": "MsixPackage",
+      "doNotLaunchApp": true
+    },
+    "PowerModeCmdPal (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

@@ -1,0 +1,3 @@
+[Files]
+"AppPackages\x64\PowerModeCmdPal_1.0.0.0_Test\PowerModeCmdPal_1.0.0.0_x64.msix" "PowerModeCmdPal_1.0.0.0_x64.msix"
+"AppPackages\ARM64\PowerModeCmdPal_1.0.0.0_Test\PowerModeCmdPal_1.0.0.0_arm64.msix" "PowerModeCmdPal_1.0.0.0_arm64.msix"
