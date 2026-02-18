@@ -2,12 +2,9 @@
 // The Microsoft Corporation licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-using Microsoft.CommandPalette.Extensions;
 using Microsoft.CommandPalette.Extensions.Toolkit;
 using PowerModeCmdPal.Commands;
 using PowerModeCmdPal.Helpers;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace PowerModeCmdPal.Items;

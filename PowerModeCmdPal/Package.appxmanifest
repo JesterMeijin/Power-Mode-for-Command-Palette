@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 
 <Package
   xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
@@ -38,15 +38,14 @@
         BackgroundColor="transparent"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"  Square71x71Logo="Assets\SmallTile.png" Square310x310Logo="Assets\LargeTile.png">
-        </uap:DefaultTile >
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" />
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
       </uap:VisualElements>
       <Extensions>
         <com:Extension Category="windows.comServer">
           <com:ComServer>
             <com:ExeServer Executable="PowerModeCmdPal.exe" Arguments="-RegisterProcessAsComServer" DisplayName="Power Mode for Command Palette">
-              <com:Class Id="71065ad6-14c0-44df-81ab-bd88bd9d7bfb" DisplayName="Power Mode for Command Palette" />
+              <com:Class Id="47691d48-7642-4ad2-9682-f02d460bf671" DisplayName="Power Mode for Command Palette" />
             </com:ExeServer>
           </com:ComServer>
         </com:Extension>
@@ -59,7 +58,7 @@
             <uap3:Properties>
               <CmdPalProvider>
                 <Activation>
-                  <CreateInstance ClassId="71065ad6-14c0-44df-81ab-bd88bd9d7bfb" />
+                  <CreateInstance ClassId="47691d48-7642-4ad2-9682-f02d460bf671" />
                 </Activation>
                 <SupportedInterfaces>
                   <Commands/>
