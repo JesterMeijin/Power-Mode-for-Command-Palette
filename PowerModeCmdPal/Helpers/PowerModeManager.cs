@@ -5,7 +5,6 @@
 using PowerModeCmdPal.Items;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Runtime.InteropServices;
 
@@ -94,6 +93,6 @@ internal static IEnumerable<Guid> GetPowerModeGuidList()
 
         // 259 = ERROR_NO_MORE_ITEMS
         if (result != 259)
-            throw new Win32Exception((int)result);
+            System.Diagnostics.Debug.WriteLine($"PowerEnumerate stopped unexpectedly with error {result}. This device may not support power plan enumeration.");
     }
 }
