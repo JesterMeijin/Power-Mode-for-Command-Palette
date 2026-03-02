@@ -5,6 +5,7 @@
 using Microsoft.CommandPalette.Extensions.Toolkit;
 using PowerModeCmdPal.Commands;
 using PowerModeCmdPal.Helpers;
+using System;
 using System.Linq;
 
 namespace PowerModeCmdPal.Items;
@@ -15,7 +16,7 @@ internal sealed partial class FallbackPowerModeCommandItem : FallbackCommandItem
     private readonly PowerModeManager? _powerModeManager;
 
     public FallbackPowerModeCommandItem(PowerModeManager? powerModeManager)
-        : base("Set power mode", "jestermeijin.cmdpal.powermode.fallback")
+        : base(new NoOpCommand(), "Set power mode", "jestermeijin.cmdpal.powermode.fallback")
     {
         Title = string.Empty;
         Subtitle = string.Empty;
@@ -35,8 +36,9 @@ internal sealed partial class FallbackPowerModeCommandItem : FallbackCommandItem
             return;
         }
 
-        var powerModeListItems = _powerModeManager.PowerModeListItems.Where(w => !string.IsNullOrWhiteSpace(w.Title));
-        var filteredPowerMode = ListHelpers.FilterList(powerModeListItems, query, (s, i) => ListHelpers.ScoreListItem(s, i)).FirstOrDefault();
+        var filteredPowerMode = _powerModeManager.PowerModeListItems
+            .Where(w => !string.IsNullOrWhiteSpace(w.Title) && w.Title!.Contains(query, StringComparison.OrdinalIgnoreCase))
+            .FirstOrDefault();
 
         if (filteredPowerMode is not null && !string.IsNullOrWhiteSpace(filteredPowerMode.Title))
         {
