@@ -8,7 +8,6 @@ using PowerModeCmdPal.Commands;
 using PowerModeCmdPal.Helpers;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 
 namespace PowerModeCmdPal.Pages;
 
@@ -62,7 +61,7 @@ internal sealed partial class PowerModeCmdPalPage : ListPage
                     });
                 }
             }
-            catch (Win32Exception ex)
+            catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"Failed to update power modes: {ex.Message}");
                 itemList.Add(new ListItem(new NoOpCommand())

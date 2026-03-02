@@ -3,7 +3,6 @@
 // See the LICENSE file in the project root for more information.
 
 using System;
-using System.ComponentModel;
 using System.Runtime.InteropServices;
 
 namespace PowerModeCmdPal.Helpers;
@@ -37,7 +36,10 @@ internal static class PowerModeHelper
         {
             uint res = api(IntPtr.Zero, ref powerPlanGuid, IntPtr.Zero, IntPtr.Zero, buffer, ref size);
             if (res != 0)
-                throw new Win32Exception((int)res);
+            {
+                System.Diagnostics.Debug.WriteLine($"Failed to read power string: {res}");
+                return string.Empty;
+            }
 
             return Marshal.PtrToStringUni(buffer) ?? string.Empty;
         }

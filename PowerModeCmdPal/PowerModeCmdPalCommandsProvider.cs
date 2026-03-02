@@ -8,7 +8,6 @@ using PowerModeCmdPal.Commands;
 using PowerModeCmdPal.Helpers;
 using PowerModeCmdPal.Items;
 using PowerModeCmdPal.Pages;
-using System.ComponentModel;
 
 namespace PowerModeCmdPal;
 
@@ -28,7 +27,7 @@ public partial class PowerModeCmdPalCommandsProvider : CommandProvider
         {
             _powerModeManager = new PowerModeManager();
         }
-        catch (Win32Exception ex)
+        catch (Exception ex)
         {
             System.Diagnostics.Debug.WriteLine($"Failed to initialize PowerModeManager: {ex.Message}");
             _powerModeManager = null;

@@ -15,6 +15,9 @@ public class Program
     [MTAThread]
     public static void Main(string[] args)
     {
+        AppDomain.CurrentDomain.UnhandledException += (_, e) =>
+            System.Diagnostics.Debug.WriteLine($"Unhandled exception: {e.ExceptionObject}");
+
         if (args.Length > 0 && args[0] == "-RegisterProcessAsComServer")
         {
             global::Shmuelie.WinRTServer.ComServer server = new();

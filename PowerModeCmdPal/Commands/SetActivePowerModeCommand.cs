@@ -5,7 +5,6 @@
 using Microsoft.CommandPalette.Extensions.Toolkit;
 using PowerModeCmdPal.Helpers;
 using System;
-using System.ComponentModel;
 
 namespace PowerModeCmdPal.Commands;
 
@@ -15,15 +14,12 @@ internal sealed partial class SetActivePowerModeCommand(Guid powerModeGuid, bool
 
     public override CommandResult Invoke()
     {
-        // Validate GUID before passing to Windows
         if (powerModeGuid == Guid.Empty)
-        {
-            throw new ArgumentException("Power mode GUID cannot be empty", nameof(powerModeGuid));
-        }
+            return CommandResult.ShowToast("Failed to set power mode: invalid power mode.");
 
         uint result = PowerModeManager.SetActivePowerModeGuid(powerModeGuid);
         if (result != 0)
-            throw new Win32Exception((int)result);
+            return CommandResult.ShowToast($"Failed to set power mode (error {result}). This device may not support switching power plans.");
 
         if (isFallback)
             return CommandResult.ShowToast("Successfully set to \"" + PowerModeHelper.ReadFriendlyName(powerModeGuid) + "\"");
