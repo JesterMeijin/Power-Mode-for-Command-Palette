@@ -15,9 +15,6 @@ public class Program
     [MTAThread]
     public static void Main(string[] args)
     {
-        AppDomain.CurrentDomain.UnhandledException += (_, e) =>
-            System.Diagnostics.Debug.WriteLine($"Unhandled exception: {e.ExceptionObject}");
-
         if (args.Length > 0 && args[0] == "-RegisterProcessAsComServer")
         {
             global::Shmuelie.WinRTServer.ComServer server = new();
@@ -39,18 +36,7 @@ public class Program
         }
         else
         {
-            try
-            {
-                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
-                {
-                    FileName = "x-cmdpal://",
-                    UseShellExecute = true,
-                });
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine($"Failed to launch Command Palette: {ex.Message}");
-            }
+            Console.WriteLine("Not being launched as a Extension... exiting.");
         }
     }
 }
