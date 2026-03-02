@@ -15,7 +15,7 @@ internal sealed partial class FallbackPowerModeCommandItem : FallbackCommandItem
     private readonly PowerModeManager? _powerModeManager;
 
     public FallbackPowerModeCommandItem(PowerModeManager? powerModeManager)
-        : base(new NoOpCommand(), "Set power mode")
+        : base("Set power mode", "jestermeijin.cmdpal.powermode.fallback")
     {
         Title = string.Empty;
         Subtitle = string.Empty;

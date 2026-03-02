@@ -14,10 +14,17 @@ namespace PowerModeCmdPal.Helpers;
 internal sealed class PowerModeManager
 {
     private readonly List<PowerModeListItem> _powerModesListItems = new();
-    
+
     public PowerModeManager()
     {
-        UpdatePowerModeListItems();
+        try
+        {
+            UpdatePowerModeListItems();
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Failed to initialize power mode list: {ex.Message}");
+        }
     }
 
     public IReadOnlyList<PowerModeListItem> PowerModeListItems => _powerModesListItems;
@@ -38,10 +45,15 @@ internal sealed class PowerModeManager
         return NativeMethods.PowerSetActiveScheme(IntPtr.Zero, ref powerModeGuid);
     }
 
-    internal static Guid GetActivePowerModeGuid()
+internal static Guid GetActivePowerModeGuid()
     {
-        if (NativeMethods.PowerGetActiveScheme(IntPtr.Zero, out var ptr) != 0)
-            throw new Win32Exception();
+        uint result = NativeMethods.PowerGetActiveScheme(IntPtr.Zero, out var ptr);
+
+        if (result != 0)
+        {
+            System.Diagnostics.Debug.WriteLine($"Failed to get active power scheme: {result}");
+            return Guid.Empty;
+        }
 
         try
         {
@@ -54,7 +66,7 @@ internal sealed class PowerModeManager
         }
     }
 
-    internal static IEnumerable<Guid> GetPowerModeGuidList()
+internal static IEnumerable<Guid> GetPowerModeGuidList()
     {
         Guid powerPlanGuid = Guid.Empty;
         uint index = 0;
