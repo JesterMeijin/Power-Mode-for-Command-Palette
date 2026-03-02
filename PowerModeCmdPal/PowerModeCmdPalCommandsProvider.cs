@@ -8,6 +8,7 @@ using PowerModeCmdPal.Commands;
 using PowerModeCmdPal.Helpers;
 using PowerModeCmdPal.Items;
 using PowerModeCmdPal.Pages;
+using System;
 
 namespace PowerModeCmdPal;
 
@@ -37,7 +38,7 @@ public partial class PowerModeCmdPalCommandsProvider : CommandProvider
         _commandItem = new CommandItem(new PowerModeCmdPalPage(_powerModeManager))
         {
             MoreCommands = [
-                new CommandContextItem(new OpenPowerModeSettingsCommand() { Name = "Open in Settings" }),
+                new CommandContextItem(new OpenPowerModeSettingsCommand() { Name = "Open in Settings" })
             ]
         };
     }
