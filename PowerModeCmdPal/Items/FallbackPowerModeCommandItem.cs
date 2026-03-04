@@ -36,16 +36,15 @@ internal sealed partial class FallbackPowerModeCommandItem : FallbackCommandItem
             return;
         }
 
-        var filteredPowerMode = _powerModeManager.PowerModeListItems
-            .Where(w => !string.IsNullOrWhiteSpace(w.Title) && w.Title!.Contains(query, StringComparison.OrdinalIgnoreCase))
-            .FirstOrDefault();
+        var powerModes = _powerModeManager.PowerModeListItems.Where(w => !string.IsNullOrWhiteSpace(w.Title));
+        var queryPowerMode = ListHelpers.FilterList(powerModes, query, (s, i) => ListHelpers.ScoreListItem(s, i)).FirstOrDefault();
 
-        if (filteredPowerMode is not null && !string.IsNullOrWhiteSpace(filteredPowerMode.Title))
+        if (queryPowerMode is not null && !string.IsNullOrWhiteSpace(queryPowerMode.Title))
         {
-            Title = $"Set power mode to \"{filteredPowerMode.Title}\"";
-            Subtitle = filteredPowerMode.Subtitle ?? string.Empty;
+            Title = $"Set power mode to \"{queryPowerMode.Title}\"";
+            Subtitle = queryPowerMode.Subtitle ?? string.Empty;
             Icon = Icons.PowerModeIcon;
-            Command = new SetActivePowerModeCommand(filteredPowerMode.PowerModeGuid, true);
+            Command = new SetActivePowerModeCommand(queryPowerMode.PowerModeGuid, true);
         }
         else
         {

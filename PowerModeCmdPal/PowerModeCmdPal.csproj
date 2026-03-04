@@ -21,7 +21,7 @@
 
   <ItemGroup>
     <Manifest Include="$(ApplicationManifest)" />
-	<Content Include="Assets\**\*.png" />
+    <Content Include="Assets\**\*.png" />
   </ItemGroup>
 
   <Target Name="PrepareAssets" BeforeTargets="BeforeBuild">
@@ -58,7 +58,8 @@
     <PackageReference Include="Microsoft.CommandPalette.Extensions" />
     <PackageReference Include="Microsoft.Windows.CsWinRT" />
     <PackageReference Include="Shmuelie.WinRTServer" />
-
+    <PackageReference Include="ToolGood.Words.Pinyin" />
+    
     <!-- Needed to enable building an MSIX package -->
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools.MSIX">
       <PrivateAssets>all</PrivateAssets>
