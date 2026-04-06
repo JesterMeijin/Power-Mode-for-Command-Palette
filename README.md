@@ -15,11 +15,9 @@ You can install the extension directly from Command Palette from one of these tw
 
 ### Winget
 
-[![WinGet Package Version](https://img.shields.io/winget/v/jJesterMeijin.PowerModeforCommandPalette)](https://winstall.app/apps/JesterMeijin.PowerModeforCommandPalette)
-
 You can install the extension using [Winget](https://learn.microsoft.com/en-us/windows/package-manager/winget/) with the following command:
 ```
-winget install --id=JesterMeijin.PowerModeforCommandPalette  -e
+winget install --name "Power Mode for Command Palette"
 ```
 
 ### Windows Store
